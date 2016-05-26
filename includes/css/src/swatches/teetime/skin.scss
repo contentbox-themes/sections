@@ -1,0 +1,229 @@
+@import '_variables.scss';
+
+.topbar > ul{
+	float:right;
+}
+.topbar > ul > li{
+    border-right: 1px solid $gray-lighter;
+	display:inline;
+	list-style:none;
+	padding:0 10px;
+	position:relative;
+}
+.navbar-brand{
+	color: $brand-tertiary;
+	font-size: $font-size-h2;
+	padding:0;
+}
+#nav-main{
+	background:$navbar-default-bg;
+}
+@media (min-width: 768px){
+	#nav-main.navbar {
+    	border-radius: 0;
+	}
+}
+#nav-main.navbar{
+	border:none;
+	margin-bottom:0;
+}
+#nav-main a{
+	color: $navbar-default-link-color;
+}
+#nav-main .nav>li>a:hover, .nav>li>a:focus{
+	background:$brand-tertiary;
+}
+#nav-main .navbar-toggle .icon-bar{
+	background:$navbar-inverse-color;
+}
+
+#nav-main .dropdown-menu{
+	border:none;
+}
+.brand-img{
+	padding:5px;
+}
+.brand-img img{
+	max-height:45px;
+}
+#body-header{
+	background:$brand-tertiary;
+    color: #fff;
+    margin-bottom: 0;
+    text-align: center;
+	padding:40px 0;
+}
+#body-header h1{
+	 color: $navbar-inverse-color;
+	 text-transform:uppercase;
+}
+#body-header h1 small{
+	clear:both;
+	color:$headings-color;
+	display:block;
+	font-size:25px;
+	font-weight:normal;
+}
+#body-main{
+	background-color:$body-bg;
+}
+
+#body-main h2{
+	border-bottom:1px solid $navbar-default-color;
+	margin-bottom:20px;
+}
+
+#blog-sidenav, .col-sm-3.sidenav{
+	margin-top:20px;
+}
+
+#blog-sidenav .panel{
+	border-radius:0;
+	box-shadow:none;
+}
+#blog-sidenav .panel-heading{
+	border-radius:0;
+	padding:4px 15px;
+}
+
+#blog-sidenav ul,.sidebar-nav ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+	
+}
+
+#blog-sidenav ul>li, .sidebar-nav ul>li{
+	background:$navbar-default-color;
+	margin:2px;
+	padding: 5px 8px;
+}
+/*********** Sections  ****************/
+#section-1 .carousel-img{
+	width: 100%;
+}
+#section-1 .carousel-caption{
+	top:15%;
+}
+@media screen and (max-width: 768px){
+	.carousel-caption {
+		display:none;
+	}
+}
+#section-1 .carousel-caption h2{
+	line-height: inherit;
+	margin-bottom:0;
+}
+#section-1 .carousel-caption h2 a{
+	background: rgba(60,121,163,.7);
+	color:#FFF;
+	padding: 5px 15px;
+}
+#section-1 .desc{
+	background: rgba(233,234,234,.7);
+	color:#000;
+	font-size: $font-size-large;
+	padding: 5px 15px;
+	text-shadow:none;
+}
+#section-1 .btn-default{
+	background: #000;
+	border:none;
+	border-radius:0;
+	color:#FFF;
+}
+#section-3, #section-5, #section-3 a, #section-5 a{
+	color:#FFF;
+}
+#section-2 h2, , #section-3 h2, #section-5 h2{
+	text-transform:uppercase;
+}
+#section-2{
+	text-align:center;
+}
+#section-3{
+	background-color:$brand-secondary;
+	font-size: 1.4em;
+	text-align:center;
+}
+ #section-5{
+ 	background-size:cover;
+ }
+#section-3 .section-text-box{
+	margin: 0 auto;
+	width:80%;
+}
+#section-2 .container, #section-3 .container, #section-4 .container, #section-5 .container{
+	padding-bottom:50px;
+	padding-top:50px;
+}
+.btn-trans{
+	border: 1px solid #FFF;
+	border-radius: 0;
+	text-transform: uppercase;
+}
+.section-text{
+	padding-bottom:15px;
+}
+/*********** Footer  ****************/
+#footer {
+	background-color:$brand-primary;
+}
+#footer a:link{
+	color: $brand-light;
+}
+#footer-main{
+	color: #FFF;
+}
+#footer-main h2{
+	font-size: $font-size-h4;
+}
+#footer .recentEntries{
+	list-style:none;
+	padding:0;
+}
+#footer .recentEntries li{
+	border-top: 1px solid $brand-secondary;
+	padding: 8px 0;
+}
+#footer .recentEntries li:first-child{
+	border:none;
+}
+#footer .recentEntries .entryDate{
+	color: $brand-tertiary;
+} 
+#footer .icon, #footer .icon a, #footer .locicon {
+    display: block;
+    float:left;
+    height: 40px;
+    width: 40px;
+}
+#footer .icon {
+    background-image: url(../../../../images/sprite-icons.png);
+    background-repeat: no-repeat;
+}
+#footer .icon-twitter {
+	background-position: 0px 0px;
+}
+#footer .icon-facebook {
+	background-position: -40px 0;
+}
+#footer .icon-google {
+	background-position: -80px 0;
+}
+#footer .icon-youtube {
+	background-position: -120px 0;
+}
+#footer .icon-instagram {
+	background-position: -160px 0;
+}
+#footer .social{
+	float:right;
+}
+ #footer .locicon {
+	font-size:1.5em; 
+}
+#copyright{
+	background:$brand-quaternary;
+	padding: 15px 0;
+}
