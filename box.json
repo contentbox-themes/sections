@@ -1,41 +1,26 @@
 {
-    "name":"Content Box Theme - Sections 1.0",
+    "name":"ContentBox Theme - Sections",
     "version":"1.0.0",
+    "slug":"cbtheme-sections",
+    "location" : "https://github.com/contentbox-themes/sections/archive/master.zip",
     "author":"Ortus Solutions",
-    "location":"",
-    "directory":"",
-    "createPackageDirectory":true,
-    "packageDirectory":"",
-    "homepage":"http://www.ortussolutions.com",
-    "documentation":"",
+    "homepage":"http://www.ortussolutions.com/products/contentbox",
+    "documentation":"https://github.com/contentbox-themes/sections",
     "repository":{
         "type":"git",
         "URL":"https://github.com/contentbox-themes/sections"
     },
     "bugs":"https://github.com/contentbox-themes/sections/issues",
-    "slug":"cbthemes-sections",
     "shortDescription":"An official ContentBox 3.0 theme",
     "description":"",
     "instructions":"",
     "changelog":"",
-    "type":"",
-    "keywords":[
-        
-    ],
-    "private":false,
-    "engines":[
-        {
-            "type":"",
-            "version":""
-        }
-    ],
-    "defaultEngine":"",
-    "defaultPort":0,
+    "type":"contentbox-themes",
     "projectURL":"",
     "license":[
         {
-            "type":"",
-            "URL":""
+            "type":"Apache2",
+            "URL":"http://www.apache.org/licenses/LICENSE-2.0"
         }
     ],
     "contributors":[
@@ -52,36 +37,6 @@
     },
     "ignore":[
         "**/.*",
-        "test",
         "tests"
-    ],
-    "testbox":{
-        "runner":[
-            {
-                "default":""
-            }
-        ],
-        "labels":[
-            
-        ],
-        "reporter":"",
-        "reporterResults":"",
-        "bundles":[
-            ""
-        ],
-        "directory":{
-            "mapping":"",
-            "recurse":true
-        },
-        "watchers":[
-            
-        ],
-        "notify":{
-            "emails":[
-                
-            ],
-            "growl":"",
-            "URL":""
-        }
-    }
+    ]
 }
