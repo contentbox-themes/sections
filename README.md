@@ -1,4 +1,4 @@
 # Sections
 Sections theme for ContentBox
 
-![open theme preview](https://github.com/contentbox-themes/sections/blob/master/screenshot.png)
+<img src="https://raw.githubusercontent.com/contentbox-themes/sections/master/screenshot.png" class="img-responsive">
