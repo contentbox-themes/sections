@@ -170,8 +170,6 @@
 <!--- Custom JS --->
 <!---<script type="text/javascript">
 	$(document).ready(function() {
-	 	// form validator
-		$("##commentForm").validator({position:'top left'});
 		<cfif cb.isCommentFormError()>
 			toggleCommentForm();
 		</cfif>
