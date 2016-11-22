@@ -1,8 +1,8 @@
 {
     "name":"ContentBox Theme - Sections",
-    "version":"1.0.0",
+    "version":"1.0.1",
     "slug":"cbtheme-sections",
-    "location" : "https://github.com/contentbox-themes/sections/archive/master.zip",
+    "location":"contentbox-themes/sections#v1.0.1",
     "author":"Ortus Solutions",
     "homepage":"http://www.ortussolutions.com/products/contentbox",
     "documentation":"https://github.com/contentbox-themes/sections",
@@ -34,6 +34,11 @@
     },
     "installPaths":{
         
+    },
+    "scripts":{
+        "postVersion":"package set location='contentbox-themes/sections#v`package version`'",
+        "onRelease":"publish",
+        "postPublish":"!git push origin master && !git push origin master --tags"
     },
     "ignore":[
         "**/.*",
