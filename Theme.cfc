@@ -159,7 +159,7 @@ component{
 	*/
 	private function generateContentStoreSliderFields(){
 		var aFieldKeys 		= [ "linkURL", "linkText","imageURL" ];
-		var contentCatName 	= settingService.getSetting("cb_theme_sections_sec1Category");
+		var contentCatName 	= settingService.getSetting("cb_theme_#settingService.getSetting( 'cb_site_theme' )#_sec1Category");
 				
 		// is there a category selected
 		if( contentCatName != "none" ){
@@ -174,7 +174,7 @@ component{
 	*/
 	private function generateContentStoreGridFields(){
 		var aFieldKeys 		= [ "linkURL","imageURL" ];
-		var contentCatName 	= settingService.getSetting("cb_theme_sections_sec2Category");
+		var contentCatName 	= settingService.getSetting("cb_theme_#settingService.getSetting( 'cb_site_theme' )#_sec2Category");
 				
 		// is there a category selected
 		if( contentCatName != "none" ){
