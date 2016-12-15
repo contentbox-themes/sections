@@ -4,7 +4,7 @@
     "slug":"cbtheme-sections",
     "location"  : "http://downloads.ortussolutions.com/ortussolutions/contentbox-themes/sections/@build.version@/sections-@build.version@.zip",
     "author":"Ortus Solutions",
-    "homepage":"http://www.ortussolutions.com/products/contentbox",
+    "homepage":"https://www.ortussolutions.com/products/contentbox",
     "documentation":"https://github.com/contentbox-themes/sections",
     "repository":{
         "type":"git",

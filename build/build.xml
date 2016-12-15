@@ -108,9 +108,6 @@
 				<include name="*.zip" />
 			</fileset>
 		</checksum>
-		
-		<!-- Cleanup -->
-		<delete dir="${dir.build}" />
 	</target>
 	
     <!-- Get Dependencies -->
