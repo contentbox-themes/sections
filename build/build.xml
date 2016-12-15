@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<project name="build" basedir="../" default="build">
+
+	<!-- Version: UPDATE ON EACH RELEASE AS NEEDED -->
+	<property name="theme.name" 		value="sections" />
+	<property name="theme.version" 		value="1.1.0"/>
+	<property name="groupID" 			value="ortussolutions" />
+	
+	<!-- Travis Detection -->
+	<condition property="isTravis" else="false">
+    	<isset property="isTravis"/>
+    </condition>
+
+	<!-- Build Labels -->
+	<tstamp prefix="start"/>
+	<!-- Define Tasks -->
+	<path id="cp">
+		<fileset dir="build/lib">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	<taskdef resource="net/sf/antcontrib/antlib.xml" classpathref="cp" />
+	
+	<!-- Init -->
+	<target name="init" description="Init Build" unless="src.isInit">
+		<!-- Default environment check, if not passed via -Denvironment -->
+		<condition property="environment" value="local">
+			<not><isset property="environment" /></not>
+		</condition>
+		<if>
+			<available file="build/build-${environment}.properties" />
+			<then>
+				<!-- Load env properties -->
+				<echo>Loading properties from environment: ${environment}</echo>
+				<loadproperties srcFile="build/build-${environment}.properties"/>
+			</then>
+		</if>
+
+		<!-- Load root properties -->
+		<echo>Loading base properties</echo>
+		<loadproperties srcFile="build/build.properties"/>
+
+		<!-- Build Number -->
+		<if>
+			<not><isset property="build.number" /></not>
+			<then>
+				<propertyfile file="build/build.number" comment="Build Number for ANT. Edit not!">
+					<entry key="build.number" 
+							type="int" 
+					     	operation="+"
+							pattern="00000"
+					     	default="1" />
+				</propertyfile>
+
+				<property file="build/build.number"/>
+			</then>
+		</if>
+		
+		<!-- Build Label -->
+		<property name="build.label" value="${theme.name}-${theme.version}+${build.number}-${start.DSTAMP}${start.TSTAMP}"/>
+		
+		<!-- Get Build Dependencies -->
+ 		<antcall target="getDependencies" />
+
+		<!-- Cleanup + Init -->
+		<delete dir="${dir.build}" />
+		<mkdir dir="${dir.build}"/>
+		<chmod file="${dir.build}/**" perm="og+wrs" type="both" />
+		
+		<!-- Mark as init -->
+		<property name="src.isInit" value="true" />
+	</target>
+	
+	<!-- Build Project -->
+	<target name="build" depends="init" description="Build the theme">
+		<!-- Copy build ID -->
+		<concat destfile="${dir.build}/${build.label}">Built on ${start.TODAY}</concat>
+		
+		<!-- Copy src -->	
+      	<copy todir="${dir.build}" encoding="UTF-8">
+        	<fileset dir="${basedir}">
+				<exclude name="build/**" />
+				<exclude name="_tmp/**" />
+				<exclude name=".gitignore" />
+				<exclude name=".travis.yml" />
+        	</fileset>
+        </copy>
+
+        <!-- Replace Version + Build Numbers -->
+		<replaceregexp match='@build.version@' replace="${theme.version}" flags="ig" byline="true" encoding="UTF-8">
+			<fileset dir="${dir.build}" />
+		</replaceregexp>
+		<replaceregexp match='@build.number@' replace="${build.number}" flags="ig" byline="true" encoding="UTF-8">
+			<fileset dir="${dir.build}" />
+		</replaceregexp>
+		
+        <!-- Zip Theme -->
+		<zip destfile="${dir.exports}/${theme.name}-${theme.version}.zip" basedir="${dir.build}"></zip>
+		
+		<!-- Build Checksums -->
+		<checksum forceoverwrite="true" fileext=".md5">
+			<fileset dir="${dir.exports}">
+				<include name="*.zip" />
+			</fileset>
+		</checksum>
+		<checksum forceoverwrite="true" algorithm="SHA-512" fileext=".sha512">
+			<fileset dir="${dir.exports}">
+				<include name="*.zip" />
+			</fileset>
+		</checksum>
+		
+		<!-- Cleanup -->
+		<delete dir="${dir.build}" />
+	</target>
+	
+    <!-- Get Dependencies -->
+	<target name="getDependencies" description="Get all the necessary dependencies for the build process">
+		<!-- Install dependencies for project -->
+		<exec executable="box" dir="${basedir}">
+			<arg line="install" />
+		</exec>
+	</target>
+
+</project>

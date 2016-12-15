@@ -69,9 +69,9 @@ component{
 	// Layout Variables
     this.name       	= "ContentBox Sections Theme";
 	this.description 	= "ContentBox Sections layout for ContentBox 3 based on Bootstrap 3";
-	this.version		= "1.0.0";
+    this.version        = "@build.version@+@build.number@";
 	this.author 		= "Ortus Solutions";
-	this.authorURL		= "http://www.ortussolutions";
+	this.authorURL		= "https://www.ortussolutions.com";
 	// Screenshot URL, can be absolute or locally in your layout package.
 	this.screenShotURL	= "screenshot.png";
 	

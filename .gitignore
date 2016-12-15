@@ -10,10 +10,17 @@ WEB-INF/**
 *.cache.*
 .idea
 Icon?
+
+# Build Stuff
+_tmp/*
+build/build.number
+artifacts/*
+
 # Logs
 logs/**
 tests/logs/**
 tests/results/**
+
 # Global Dependencies
 testbox/*
 node_modules/*
