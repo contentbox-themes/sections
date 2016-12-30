@@ -86,10 +86,10 @@ component{
 			{ name="cbBootswatchTheme", 	group="Colors", defaultValue="corporate", 	type="select", 	label="ContentBox Color Palette:", 	required="false", optionsUDF="getSwatches", groupIntro="Control the color scheme of your entire site by changing the color palette.", fieldHelp="#loadHelpFile( 'cbBootswatchTheme.html' )#"  },
 			
 			{ name="headerLogo", 			group="Header", defaultValue="", 			type="text", 	label="Logo URL:", groupIntro="Customize the header section of your theme.", 	fieldDescription="Enter a relative or full url for the website logo. Recommended dimensions: 300x50."  },
-			{ name="headerTopNav", 			group="Header", defaultValue="none", 		type="select", 	label="Top Navigation:", options="none,#menus()#", fieldDescription="Select a menu for the Top Navigation (top right corner of the header)."},
+			{ name="headerTopNav", 			group="Header", defaultValue="none", 		type="select", 	label="Top Navigation:", optionsUDF="menus", fieldDescription="Select a menu for the Top Navigation (top right corner of the header)."},
 			
 			{ name="footerEntriesTitle", 	group="Footer Entries", defaultValue="", 		type="text", 	label="Footer Entries Title:", groupIntro="Blog Category feed that appears in the footer.", fieldDescription="Enter a title for your feed." },
-			{ name="footerEntriesCategory", group="Footer Entries", defaultValue="none", 	type="select", 	label="Footer Entries Category:", options="none,#entryCategories()#", fieldDescription="Select the blog category."  },
+			{ name="footerEntriesCategory", group="Footer Entries", defaultValue="none", 	type="select", 	label="Footer Entries Category:", optionsUDF="entryCategories", fieldDescription="Select the blog category."  },
 			
 			{ name="locAddress", 			group="Location", defaultValue="", 		type="text", 	label="Address:", groupIntro="The address and phone number appears in the footer." },
 			{ name="locCity", 				group="Location", defaultValue="", 		type="text", 	label="City:" },
@@ -97,9 +97,9 @@ component{
 			{ name="locZip", 				group="Location", defaultValue="", 		type="text", 	label="Zip:" },
 			{ name="locPhone", 				group="Location", defaultValue="", 		type="text", 	label="Phone:" },
 			
-			{ name="sec1Category", 			group="Section 1: Slideshow", defaultValue="none", 	type="select", 		label="Content Category:", options="none,#entryCategories()#", groupIntro="Customize the slider that appears in the homepage.", fieldDescription="Select the content store category.", fieldHelp="#loadHelpFile( 'contentStoreSlider.html' )#" },
+			{ name="sec1Category", 			group="Section 1: Slideshow", defaultValue="none", 	type="select", 		label="Content Category:", optionsUDF="entryCategories", groupIntro="Customize the slider that appears in the homepage.", fieldDescription="Select the content store category.", fieldHelp="#loadHelpFile( 'contentStoreSlider.html' )#" },
 			
-			{ name="sec2Category", 			group="Section 2", defaultValue="none", 	type="select", 		label="Content Category:", options="none,#entryCategories()#", groupIntro="Customize the section below the slider.", fieldDescription="Select the content store category.", fieldHelp="#loadHelpFile( 'contentStoreGrid.html' )#"},
+			{ name="sec2Category", 			group="Section 2", defaultValue="none", 	type="select", 		label="Content Category:", optionsUDF="entryCategories", groupIntro="Customize the section below the slider.", fieldDescription="Select the content store category.", fieldHelp="#loadHelpFile( 'contentStoreGrid.html' )#"},
 			
 			{ name="sec3Title", 		group="Section 3", defaultValue="", 		type="text", 		label="Section 3 Title:", groupIntro="Customize the section with the large text in the homepage." },
 			{ name="sec3Text",			group="Section 3", defaultValue="", 		type="textarea", 	label="Section 3 Text:" },
@@ -109,7 +109,7 @@ component{
 			{ name="sec5Title", 		group="Section 5", defaultValue="", 		type="text", 		label="Section 5 Title:", groupIntro="Customize the text section above the footer." },
 			{ name="sec5Text",			group="Section 5", defaultValue="", 		type="textarea", 	label="Section 5 Text:" },
 			{ name="sec5Align", 		group="Section 5", defaultValue="right", 	type="select", 		label="Section 5 Text Alignment:", options="left,right" },
-			{ name="sec5ImgBg", 		group="Section 5", 	defaultValue="", 		type="text", 		label="Section 5 Image Background:" },
+			{ name="sec5ImgBg", 		group="Section 5", defaultValue="", 		type="text", 		label="Section 5 Image Background:" },
 			
 			{ name="rssDiscovery", 			group="Homepage", 	defaultValue="true", 	type="boolean",		label="Active RSS Discovery Links", 	required="false" },
 			{ name="showCategoriesBlogSide", 	group="Blog Sidebar Options", defaultValue="true", type="boolean",		label="Show Categories in Blog Sidebar", 	required="false" },
@@ -242,13 +242,18 @@ component{
 	/**
 	* Gets names of categories
 	*/
-	private string function entryCategories() {
+	string function entryCategories() {
 		var categoryList = arraytoList( categoryService.getAllNames() );
+		categoryList = ListPrepend( categoryList, "none" );
 		return categoryList;
 	}
 	
-	private string function menus() { 
+	/**
+	* Gets all menu slugs
+	*/
+	string function menus() { 
 		var menuList = arraytoList( menuService.getAllSlugs() );
+		menuList = ListPrepend( menuList, "none" );
 		return menuList;
 	}
 }
