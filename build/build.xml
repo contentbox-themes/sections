@@ -79,6 +79,7 @@
 		<!-- Copy src -->	
       	<copy todir="${dir.build}" encoding="UTF-8">
         	<fileset dir="${basedir}">
+        		<exclude name="artifacts/**" />
 				<exclude name="build/**" />
 				<exclude name="_tmp/**" />
 				<exclude name=".gitignore" />
