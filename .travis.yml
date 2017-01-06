@@ -46,7 +46,7 @@ after_deploy:
   # Only publish on master branch
   >
   if [ $TRAVIS_BRANCH == 'master' ]; then
-    cd $TRAVIS_BUILD_DIR/_tmp && box forgebox publish;
+    cd $TRAVIS_BUILD_DIR/_tmp/sections && box forgebox publish;
   fi
 
 # Slack notifications
