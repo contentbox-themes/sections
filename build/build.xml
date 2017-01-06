@@ -3,7 +3,7 @@
 
 	<!-- Version: UPDATE ON EACH RELEASE AS NEEDED -->
 	<property name="theme.name" 		value="sections" />
-	<property name="theme.version" 		value="1.1.0"/>
+	<property name="theme.version" 		value="1.1.1"/>
 	<property name="groupID" 			value="ortussolutions" />
 	
 	<!-- Travis Detection -->
@@ -79,6 +79,7 @@
 		<!-- Copy src -->	
       	<copy todir="${dir.build}" encoding="UTF-8">
         	<fileset dir="${basedir}">
+        		<exclude name="artifacts/**" />
 				<exclude name="build/**" />
 				<exclude name="_tmp/**" />
 				<exclude name=".gitignore" />
