@@ -74,12 +74,12 @@
 	<!-- Build Project -->
 	<target name="build" depends="init" description="Build the theme">
 		<!-- Copy build ID -->
-		<concat destfile="${dir.build}/${build.label}">Built on ${start.TODAY}</concat>
+		<concat destfile="${dir.build}/${theme.name}/${build.label}">Built on ${start.TODAY}</concat>
 		
 		<!-- Copy src -->	
-      	<copy todir="${dir.build}" encoding="UTF-8">
+      	<copy todir="${dir.build}/${theme.name}" encoding="UTF-8">
         	<fileset dir="${basedir}">
-        		<exclude name="artifacts/**" />
+				<exclude name="artifacts/**" />
 				<exclude name="build/**" />
 				<exclude name="_tmp/**" />
 				<exclude name=".gitignore" />
