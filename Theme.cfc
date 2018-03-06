@@ -68,6 +68,7 @@ component{
  	property name="menuService" 		inject="id:MenuService@cb";
  	property name="categoryService" 	inject="id:CategoryService@cb";
  	property name="contentStoreService" inject="id:ContentStoreService@cb";
+ 	property name="customFieldService" inject="customFieldService@cb";
   
 	// Layout Variables
     this.name       	= "ContentBox Sections Theme";
@@ -217,6 +218,7 @@ component{
 	*/
 	private function generateCustomFields( array fieldKeys, array cbContent ){
 		
+		transaction{
 		for( var contentItem in arguments.cbContent ) {
 				var sfields = contentItem.getCustomFieldsAsStruct();
 					
@@ -226,13 +228,10 @@ component{
 					if( !structKeyExists( sfields, field  ) ){
 							
 						// create field
-						transaction{
-							var newCustomField = EntityNew( 'cbCustomField' );
-							newCustomField.setKey( field );
-							newCustomField.setValue( "" );
-							newCustomField.setRelatedContent( contentItem );
+						var args = { key = field, value = "" };
+						var oField = customFieldService.new(properties=args);
+						oField.setRelatedContent( contentItem );
 								
-							EntitySave( entity=newCustomField );
 						}
 					}
 				}		
