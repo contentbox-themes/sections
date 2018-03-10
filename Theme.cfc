@@ -231,8 +231,7 @@ component{
 							var args = { key = field, value = "" };
 							var oField = customFieldService.new(properties=args);
 							oField.setRelatedContent( contentItem );
-							contentItem.addCustomField( oField );
-									
+							customFieldService.save(oField);		
 						}
 					}
 			}		
